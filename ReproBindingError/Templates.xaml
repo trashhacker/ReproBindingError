@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ReproBindingError.ViewModels"
+             x:Class="ReproBindingError.Templates">
+
+    <DataTemplate x:Key="detailtemplate" x:DataType="{x:Type viewmodels:DetailViewModel}">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="{Binding Title}"/>
+            <Label Grid.Row="1" Text="{Binding Name}"/>
+            <Label Grid.Row="2" Text="{Binding Lastname}"/>
+
+
+            <CollectionView Grid.Row="3" ItemsSource="{Binding Materials}">
+                <CollectionView.ItemTemplate >
+                    <DataTemplate x:DataType="{x:Type viewmodels:MaterialsViewModel}">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Identifier}"/>
+                            <Label Text="{Binding Description}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        
+        
+        
+    </DataTemplate>
+</ResourceDictionary>
